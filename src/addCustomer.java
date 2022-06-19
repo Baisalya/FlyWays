@@ -1,4 +1,6 @@
 
+import java.awt.Image;
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
@@ -7,7 +9,17 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
-
+import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,6 +42,8 @@ public class addCustomer extends javax.swing.JInternalFrame {
      Connection con;
      PreparedStatement pst;
     // ResultSet rs;
+     String path=null;
+     byte[] userimage=null;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,8 +72,8 @@ public class addCustomer extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        male = new javax.swing.JRadioButton();
+        female = new javax.swing.JRadioButton();
         txtcontact = new javax.swing.JTextField();
         txtdob = new com.toedter.calendar.JDateChooser();
         txtphoto = new javax.swing.JLabel();
@@ -96,12 +110,22 @@ public class addCustomer extends javax.swing.JInternalFrame {
 
         txtfirstname.setForeground(new java.awt.Color(204, 204, 204));
         txtfirstname.setText("Enter Your First Name");
+        txtfirstname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfirstnameActionPerformed(evt);
+            }
+        });
 
         txtlastname.setForeground(new java.awt.Color(204, 204, 204));
         txtlastname.setText("Enter Your Last Name");
 
         txtnic.setForeground(new java.awt.Color(204, 204, 204));
         txtnic.setText("Enter Your Nic Number");
+        txtnic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnicActionPerformed(evt);
+            }
+        });
 
         txtpassport.setForeground(new java.awt.Color(204, 204, 204));
         txtpassport.setText("Enter Your Passport Id");
@@ -161,16 +185,16 @@ public class addCustomer extends javax.swing.JInternalFrame {
                         .addContainerGap())))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 69, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 69, -1, 280));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Customer ID");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 28, 101, 23));
 
-        txtid.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        txtid.setForeground(new java.awt.Color(102, 102, 255));
+        txtid.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
+        txtid.setForeground(new java.awt.Color(255, 0, 51));
         txtid.setText("jLabel7");
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 33, -1, -1));
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 200, 20));
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
@@ -188,14 +212,16 @@ public class addCustomer extends javax.swing.JInternalFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Contact");
 
-        jRadioButton1.setText("Male");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        male.setBackground(new java.awt.Color(51, 153, 255));
+        male.setText("Male");
+        male.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                maleActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setText("Female");
+        female.setBackground(new java.awt.Color(51, 153, 255));
+        female.setText("Female");
 
         txtcontact.setForeground(new java.awt.Color(204, 204, 204));
         txtcontact.setText("Enter Your Phone Number");
@@ -214,9 +240,9 @@ public class addCustomer extends javax.swing.JInternalFrame {
                         .addGap(32, 32, 32)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(male, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(jRadioButton2)
+                                .addComponent(female)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(txtcontact)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -235,8 +261,8 @@ public class addCustomer extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(male)
+                    .addComponent(female))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -247,7 +273,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(348, 96, -1, -1));
 
         txtphoto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 153, 255), 1, true));
-        getContentPane().add(txtphoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 96, 207, 194));
+        getContentPane().add(txtphoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 96, 200, 200));
 
         jButton1.setText("Browse");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -257,19 +283,26 @@ public class addCustomer extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(701, 300, -1, -1));
 
+        jButton2.setBackground(new java.awt.Color(102, 102, 255));
         jButton2.setText("Add");
+        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(372, 327, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 70, 30));
 
         jButton3.setText("Cancel");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 327, -1, -1));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 70, 30));
 
         jLabel7.setIcon(new javax.swing.ImageIcon("D:\\FlyWays\\src\\images\\wallpaper1.jpg")); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 460));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -304,20 +337,104 @@ public class addCustomer extends javax.swing.JInternalFrame {
         }
    } 
     
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_maleActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+       
+        try {
+             JFileChooser pc=new JFileChooser();
+        pc.showOpenDialog(null);
+        File pic=pc.getSelectedFile();
+        FileNameExtensionFilter filter=new FileNameExtensionFilter("*.images","png","jpg");
+        pc.addChoosableFileFilter(filter);
+        //img format and after image format image choose frome browse button
+        path=pic.getAbsolutePath();
+        BufferedImage img;
+            img = ImageIO.read(pc.getSelectedFile());
+            
+            ImageIcon imageIcon=new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(250,250,Image.SCALE_DEFAULT));
+            //image size 
+            txtphoto.setIcon(imageIcon);
+            File image=new File(path);
+            FileInputStream fis=new FileInputStream(image);
+            ByteArrayOutputStream baos=new ByteArrayOutputStream();
+            byte[] buff=new byte[1024];
+            for(int readNum; (readNum=fis.read(buff))!=-1 ;)
+            {
+            baos.write(buff,0,readNum);
+            }
+            userimage=baos.toByteArray();
+        } catch (IOException ex) {
+            Logger.getLogger(addCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        String id=txtid.getText();
+        String firstname=txtfirstname.getText();
+        String lastname=txtlastname.getText();
+        String nicno=txtnic.getText();
+        String passport=txtpassport.getText();
+        String address=txtaddress.getText();
+        //date and gender contact
+        DateFormat da=new SimpleDateFormat("dd-MM-yyyy");
+         String date=da.format(txtdob.getDate());
+        String Gender;
+        if(male.isSelected()){
+            Gender="Male";
+        }else{
+        Gender="Female";
+        }
+        String contact=txtcontact.getText();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways","root","");
+             pst=con.prepareStatement("insert into customer(id,firstname,lastname,nicno,passport,address,dob,gender,contact,photo)values(?,?,?,?,?,?,?,?,?,?)");
+             pst.setString(1,id);
+             pst.setString(2,firstname);
+             pst.setString(3,lastname);
+             pst.setString(4,nicno);
+             pst.setString(5,passport);
+             pst.setString(6,address);
+             pst.setString(7,date);
+             pst.setString(8,Gender);
+             pst.setString(9,contact);
+             pst.setBytes(10,userimage);
+             pst.executeUpdate();
+             JOptionPane.showMessageDialog(null,"Reg. created...........");
+             
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(addCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(addCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtnicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnicActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnicActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtfirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfirstnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfirstnameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton female;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -333,9 +450,8 @@ public class addCustomer extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton male;
     private javax.swing.JTextArea txtaddress;
     private javax.swing.JTextField txtcontact;
     private com.toedter.calendar.JDateChooser txtdob;
