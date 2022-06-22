@@ -108,7 +108,6 @@ public class addCustomer extends javax.swing.JInternalFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Address");
 
-        txtfirstname.setForeground(new java.awt.Color(204, 204, 204));
         txtfirstname.setText("Enter Your First Name");
         txtfirstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,10 +115,10 @@ public class addCustomer extends javax.swing.JInternalFrame {
             }
         });
 
-        txtlastname.setForeground(new java.awt.Color(204, 204, 204));
+        txtlastname.setForeground(new java.awt.Color(51, 51, 51));
         txtlastname.setText("Enter Your Last Name");
 
-        txtnic.setForeground(new java.awt.Color(204, 204, 204));
+        txtnic.setForeground(new java.awt.Color(51, 51, 51));
         txtnic.setText("Enter Your Adhar Number");
         txtnic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,10 +126,11 @@ public class addCustomer extends javax.swing.JInternalFrame {
             }
         });
 
-        txtpassport.setForeground(new java.awt.Color(204, 204, 204));
+        txtpassport.setForeground(new java.awt.Color(51, 51, 51));
         txtpassport.setText("Enter Your Passport Id");
 
         txtaddress.setColumns(20);
+        txtaddress.setForeground(new java.awt.Color(51, 51, 51));
         txtaddress.setRows(5);
         jScrollPane1.setViewportView(txtaddress);
 
@@ -146,7 +146,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Contact");
 
-        txtcontact.setForeground(new java.awt.Color(204, 204, 204));
+        txtcontact.setForeground(new java.awt.Color(51, 51, 51));
         txtcontact.setText("Enter Your Phone Number");
 
         male.setBackground(new java.awt.Color(51, 153, 255));
@@ -311,7 +311,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways","root","");
          java.sql.Statement s=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-        java.sql.ResultSet rs=s.executeQuery("select MAX(id) from customer");
+        java.sql.ResultSet rs=s.executeQuery("select MAX(id) from passanger");
             rs.next();
             rs.getString("MAX(id)");
             if (rs.getString("MAX(id)")== null)
@@ -395,7 +395,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
              con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways","root","");
-             pst=con.prepareStatement("insert into customer(id,firstname,lastname,nicno,passport,address,dob,gender,contact,photo)values(?,?,?,?,?,?,?,?,?,?)");
+             pst=con.prepareStatement("insert into passanger(id,firstname,lastname,nicno,passport,address,dob,gender,contact,photo)values(?,?,?,?,?,?,?,?,?,?)");
              pst.setString(1,id);
              pst.setString(2,firstname);
              pst.setString(3,lastname);

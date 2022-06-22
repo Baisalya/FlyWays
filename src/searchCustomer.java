@@ -326,7 +326,7 @@ public class searchCustomer extends javax.swing.JInternalFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways","root","");
          java.sql.Statement s=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-        java.sql.ResultSet rs=s.executeQuery("select MAX(id) from customer");
+        java.sql.ResultSet rs=s.executeQuery("select MAX(id) from passanger");
             rs.next();
             rs.getString("MAX(id)");
             if (rs.getString("MAX(id)")== null)
@@ -410,7 +410,7 @@ public class searchCustomer extends javax.swing.JInternalFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
              con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways","root","");
-             pst=con.prepareStatement("insert into customer(id,firstname,lastname,nicno,passport,address,dob,gender,contact,photo)values(?,?,?,?,?,?,?,?,?,?)");
+             pst=con.prepareStatement("insert into passanger(id,firstname,lastname,nicno,passport,address,dob,gender,contact,photo)values(?,?,?,?,?,?,?,?,?,?)");
            //  pst.setString(1,id);
              pst.setString(2,firstname);
              pst.setString(3,lastname);
@@ -447,7 +447,7 @@ public class searchCustomer extends javax.swing.JInternalFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways","root","");
-            pst=con.prepareStatement("select*from customer where id=?");
+            pst=con.prepareStatement("select*from passanger where id=?");
             pst.setString(1, id);
            ResultSet rs=pst.executeQuery();
            if(rs.next()==false){
