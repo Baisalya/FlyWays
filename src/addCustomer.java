@@ -300,7 +300,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wallpaper1.jpg"))); // NOI18N
         jLabel11.setText("0");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 710, 470));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
