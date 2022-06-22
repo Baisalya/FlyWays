@@ -80,6 +80,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -275,7 +276,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
 
         txtid.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtid.setForeground(new java.awt.Color(255, 0, 51));
-        txtid.setText("jLabel7");
+        txtid.setText("CS ID");
         getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 200, 20));
 
         jButton2.setBackground(new java.awt.Color(102, 102, 255));
@@ -295,9 +296,11 @@ public class addCustomer extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 70, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 550));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("D:\\FlyWays\\src\\images\\wallpaper1.jpg")); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 570));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wallpaper1.jpg"))); // NOI18N
+        jLabel11.setText("0");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 710, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -435,6 +438,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
