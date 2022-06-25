@@ -282,7 +282,7 @@ public class searchCustomer extends javax.swing.JInternalFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(701, 300, -1, -1));
 
         jButton2.setBackground(new java.awt.Color(102, 102, 255));
-        jButton2.setText("Add");
+        jButton2.setText("Update");
         jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
