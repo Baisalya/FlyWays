@@ -277,7 +277,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
         txtid.setFont(new java.awt.Font("Calibri", 1, 18)); // NOI18N
         txtid.setForeground(new java.awt.Color(255, 0, 51));
         txtid.setText("CS ID");
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 200, 20));
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 200, 20));
 
         jButton2.setBackground(new java.awt.Color(102, 102, 255));
         jButton2.setText("Add");
