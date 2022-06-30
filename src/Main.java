@@ -1,3 +1,6 @@
+
+import accountcreation.UserRegister;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -105,6 +108,11 @@ public class Main extends javax.swing.JFrame {
         jMenu4.setText("User");
 
         jMenuItem5.setText("UserCreation");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem5);
 
         jMenuBar1.add(jMenu4);
@@ -152,6 +160,13 @@ public class Main extends javax.swing.JFrame {
         jDesktopPane1.add(scus);
         scus.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+         UserRegister UREG=new UserRegister();
+        jDesktopPane1.add(UREG);
+        UREG.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments

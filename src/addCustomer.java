@@ -82,6 +82,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
+        setIconifiable(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -296,6 +297,8 @@ public class addCustomer extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 70, 30));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wallpaper1.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 550));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wallpaper1.jpg"))); // NOI18N
