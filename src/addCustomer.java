@@ -312,7 +312,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways","root","");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways_db","root","");
          java.sql.Statement s=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
         java.sql.ResultSet rs=s.executeQuery("select MAX(id) from passanger");
             rs.next();
@@ -397,7 +397,7 @@ public class addCustomer extends javax.swing.JInternalFrame {
         String contact=txtcontact.getText();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways","root","");
+             con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways_db","root","");
              pst=con.prepareStatement("insert into passanger(id,firstname,lastname,nicno,passport,address,dob,gender,contact,photo)values(?,?,?,?,?,?,?,?,?,?)");
              pst.setString(1,id);
              pst.setString(2,firstname);
