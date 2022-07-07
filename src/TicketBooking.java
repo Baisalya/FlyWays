@@ -303,6 +303,11 @@ public class TicketBooking extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Cancel");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Totall Price");
 
@@ -529,9 +534,7 @@ public class TicketBooking extends javax.swing.JInternalFrame {
         String nicno=rs.getString("nicno");
         String passport=rs.getString("passport");
       
-    
-       
-        //backend data call
+               //backend data call
         txtfirstname.setText(fname.trim());
         txtlastname.setText(lname.trim());
         
@@ -603,6 +606,11 @@ public class TicketBooking extends javax.swing.JInternalFrame {
             Logger.getLogger(TicketBooking.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.hide();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
