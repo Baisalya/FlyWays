@@ -31,7 +31,6 @@ import javax.swing.JOptionPane;
  * @author baishalya
  */
 public class addCustomer extends javax.swing.JInternalFrame {
-
     /**
      * Creates new form addCustomer
      */
