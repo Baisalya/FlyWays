@@ -1,5 +1,4 @@
 
-//import accountcreation.UserRegister;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -119,9 +118,24 @@ public class Main extends javax.swing.JFrame {
         jMenu3.setText("Help");
 
         jMenuItem4.setText("Check for Upadates");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem4);
 
         jMenuItem6.setText("Terms And Conditions");
+        jMenuItem6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem6MouseClicked(evt);
+            }
+        });
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem6);
 
         jMenuItem7.setText("Help");
@@ -173,12 +187,7 @@ public class Main extends javax.swing.JFrame {
        // UREG.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-        // TODO add your handling code here:
-        TicketPage tp=new TicketPage();
-        jDesktopPane1.add(tp);
-        tp.setVisible(true);
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
 
     /**
      * @param args the command line arguments
