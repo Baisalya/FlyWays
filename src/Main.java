@@ -1,4 +1,8 @@
 
+import javax.swing.JOptionPane;
+
+
+//import accountcreation.UserRegister;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -126,11 +130,6 @@ public class Main extends javax.swing.JFrame {
         jMenu3.add(jMenuItem4);
 
         jMenuItem6.setText("Terms And Conditions");
-        jMenuItem6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem6MouseClicked(evt);
-            }
-        });
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -187,7 +186,24 @@ public class Main extends javax.swing.JFrame {
        // UREG.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        // TODO add your handling code here:
+        TicketPage tp=new TicketPage();
+        jDesktopPane1.add(tp);
+        tp.setVisible(true);
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        // TODO add your handling code here:
+        termsandservices ts=new termsandservices();
+        jDesktopPane1.add(ts);
+        ts.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+         JOptionPane.showMessageDialog(null,"No New Upadates Available");
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
