@@ -45,6 +45,8 @@ public class TicketPage extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         Cancel = new javax.swing.JButton();
 
+        setTitle("FlyWays[BOOKED]");
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(

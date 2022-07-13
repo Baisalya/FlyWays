@@ -6,6 +6,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +23,7 @@ public class SignUp extends javax.swing.JFrame {
      */
     public SignUp() {
         initComponents();
+        UserAutoID();
     }
     Connection con;
        PreparedStatement pst;
@@ -57,6 +59,7 @@ public class SignUp extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("FlyWays[Sign Up]");
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -68,10 +71,11 @@ public class SignUp extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 102, 204));
         jLabel7.setText("FlyWays");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 100, 30));
+        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 100, 30));
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel13.setText("Userid:");
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 40, 30));
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 40, 30));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel8.setText("Create An Account");
@@ -98,48 +102,50 @@ public class SignUp extends javax.swing.JFrame {
                 txtfirstnameActionPerformed(evt);
             }
         });
-        jPanel4.add(txtfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 130, 20));
+        jPanel4.add(txtfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 130, 30));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel3.setText("First Name");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 60, 20));
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 60, 30));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel9.setText("Last Name");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 60, -1));
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 60, 30));
 
         txtlastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtlastnameActionPerformed(evt);
             }
         });
-        jPanel4.add(txtlastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 130, -1));
-        jPanel4.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 130, -1));
+        jPanel4.add(txtlastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 130, 30));
+        jPanel4.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 200, 130, 30));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel10.setText("Username");
-        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 60, -1));
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 60, 30));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel11.setText("Email");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 60, -1));
-        jPanel4.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 130, -1));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 60, 30));
+        jPanel4.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 130, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel4.setText("PASSWORD");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 60, 20));
-        jPanel4.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 130, -1));
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 60, 30));
+        jPanel4.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, 130, 30));
 
+        jButton2.setBackground(new java.awt.Color(0, 153, 204));
         jButton2.setText("Register");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 90, 30));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 90, 30));
 
-        txtid.setText("jLabel14");
-        jPanel4.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+        txtid.setFont(new java.awt.Font("ZapfHumnst Ult BT", 1, 14)); // NOI18N
+        txtid.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel4.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 80, 30));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/signup.jpg"))); // NOI18N
         jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, -1));
@@ -156,8 +162,37 @@ public class SignUp extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+   public void UserAutoID(){
+       
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/flyways_db","root","");
+         java.sql.Statement s=con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        java.sql.ResultSet rs=s.executeQuery("select MAX(id) from user");
+            rs.next();
+            rs.getString("MAX(id)");
+            if (rs.getString("MAX(id)")== null)
+            {
+               txtid.setText("FW001");
+            }else{
+                long id=Long.parseLong(rs.getString("MAX(id)").substring(2,rs.getString("MAX(id)").length()));
+                id++;
+                txtid.setText("FW"+String.format("%03d",id));
+            }
+        /*  if (con!=null){
+           System.out.println("success");
+          }
+          else{
+          System.out.println("error");
+          }*/
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(addCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(addCustomer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   } 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dispose();

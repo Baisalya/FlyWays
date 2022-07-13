@@ -22,14 +22,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author baish
  */
-public class TicketBooking extends javax.swing.JInternalFrame {
+public final class TicketBooking extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form TicketBooking
      */
     public TicketBooking() {
         initComponents();
-        TicketAutoID();
+        TicketAutono();
     }
     Connection con;
     PreparedStatement pst;
@@ -97,6 +97,8 @@ public class TicketBooking extends javax.swing.JInternalFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        setTitle("FlyWays[BOOKING]");
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
 
@@ -303,11 +305,6 @@ public class TicketBooking extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Cancel");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Totall Price");
 
@@ -441,7 +438,7 @@ public class TicketBooking extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-       public void TicketAutoID(){
+       public void TicketAutono(){
        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -456,7 +453,7 @@ public class TicketBooking extends javax.swing.JInternalFrame {
             }else{
                 long id=Long.parseLong(rs.getString("MAX(id)").substring(2,rs.getString("MAX(id)").length()));
                 id++;
-                txtticketno.setText("PNR"+String.format("%03d",id)+"/1");
+                txtticketno.setText("PNR"+String.format("%03d",id));
             }
         /*  if (con!=null){
            System.out.println("success");
@@ -534,7 +531,9 @@ public class TicketBooking extends javax.swing.JInternalFrame {
         String nicno=rs.getString("nicno");
         String passport=rs.getString("passport");
       
-               //backend data call
+    
+       
+        //backend data call
         txtfirstname.setText(fname.trim());
         txtlastname.setText(lname.trim());
         
@@ -597,7 +596,6 @@ public class TicketBooking extends javax.swing.JInternalFrame {
              pst.setString(5, price);
              pst.setString(6,seat);
              pst.setString(7,date);
-             
              pst.executeUpdate();
              JOptionPane.showMessageDialog(null,"Ticket Booked");
         } catch (ClassNotFoundException ex) {
@@ -606,11 +604,6 @@ public class TicketBooking extends javax.swing.JInternalFrame {
             Logger.getLogger(TicketBooking.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        this.hide();
-    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

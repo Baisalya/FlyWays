@@ -8,12 +8,12 @@
  *
  * @author baish
  */
-public class help extends javax.swing.JInternalFrame {
+public class Tutorial extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form help
+     * Creates new form Tutorial
      */
-    public help() {
+    public Tutorial() {
         initComponents();
     }
 
@@ -25,8 +25,6 @@ public class help extends javax.swing.JInternalFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        jPopupMenu1 = new javax.swing.JPopupMenu();
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -44,6 +42,5 @@ public class help extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPopupMenu jPopupMenu1;
     // End of variables declaration//GEN-END:variables
 }
