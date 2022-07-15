@@ -462,9 +462,9 @@ public final class TicketBooking extends javax.swing.JInternalFrame {
           System.out.println("error");
           }*/
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(addCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TicketBooking.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(addCustomer.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TicketBooking.class.getName()).log(Level.SEVERE, null, ex);
         }
    } 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

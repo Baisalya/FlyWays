@@ -45,7 +45,12 @@ public class TicketPage extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         Cancel = new javax.swing.JButton();
 
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("FlyWays[BOOKED]");
+        setAutoscrolls(true);
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -66,9 +71,17 @@ public class TicketPage extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+                "TICKET NO", "FLIGHT ID", "CUSTOMER ID", "CLASS", "PRICE", "SEATS"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, true, false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         Cancel.setText("Cancel");

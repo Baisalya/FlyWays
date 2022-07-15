@@ -167,9 +167,9 @@ public class Login extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
-        SignUp su=new SignUp();
-        jDesktopPane1.add(su);
-        su.setVisible(true);
+         SignUp login=new SignUp();
+           login.show();
+               dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
