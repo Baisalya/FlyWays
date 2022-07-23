@@ -331,18 +331,13 @@ public class searchCustomer extends javax.swing.JInternalFrame {
             rs.getString("MAX(id)");
             if (rs.getString("MAX(id)")== null)
             {
-//               txtid.setText("CS001");
+
             }else{
                 long id=Long.parseLong(rs.getString("MAX(id)").substring(2,rs.getString("MAX(id)").length()));
                 id++;
   //              txtid.setText("CS"+String.format("%03d",id));
             }
-        /*  if (con!=null){
-           System.out.println("success");
-          }
-          else{
-          System.out.println("error");
-          }*/
+       
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(addCustomer.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -423,7 +418,7 @@ public class searchCustomer extends javax.swing.JInternalFrame {
              pst.setBytes(9,userimage);
              pst.setString(10, id);
              pst.executeUpdate();
-             JOptionPane.showMessageDialog(null,"Registrion  Updated...........");
+             JOptionPane.showMessageDialog(null,"Reg.  Updated...........");
              
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(addCustomer.class.getName()).log(Level.SEVERE, null, ex);

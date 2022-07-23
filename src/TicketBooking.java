@@ -98,6 +98,10 @@ public final class TicketBooking extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("FlyWays[BOOKING]");
 
         jPanel1.setBackground(new java.awt.Color(51, 153, 255));
